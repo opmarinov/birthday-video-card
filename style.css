@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --ink: #453d36;
+  --muted: #81766b;
+  --paper: #fffaf0;
+  --accent: #b56d52;
+  --accent-dark: #8e503c;
+  --wall: #e8dfd1;
+}
+
+* { box-sizing: border-box; }
+
+video::-internal-media-controls-overlay-cast-button {
+   display: none;
+}
+
+html {
+  min-height: 100%;
+  background: var(--wall);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(255, 250, 240, 0.88), transparent 38%),
+    radial-gradient(ellipse at 90% 85%, rgba(192, 166, 139, 0.24), transparent 36%),
+    linear-gradient(135deg, #eee5d8 0%, #e4d8c9 50%, #eee4d8 100%);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+button { font: inherit; }
+
+.scrapbook {
+  position: relative;
+  isolation: isolate;
+  width: min(100% - 32px, 940px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(30px, 6vw, 70px) 0 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome,
+.video-page {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  animation: arrive 800ms ease both;
+}
+
+.welcome {
+  max-width: 640px;
+  padding: clamp(30px, 7vw, 68px) clamp(22px, 6vw, 58px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 8px;
+  background: rgba(255, 250, 240, 0.76);
+  box-shadow: 0 24px 65px rgba(88, 67, 48, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+h1, h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 8vw, 5.1rem);
+  letter-spacing: -0.045em;
+}
+
+.intro {
+  max-width: 390px;
+  margin: 20px auto 30px;
+  color: var(--muted);
+  font-size: clamp(1rem, 2.8vw, 1.12rem);
+  line-height: 1.8;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 21px;
+  color: #fffaf5;
+  background: var(--accent);
+  box-shadow: 0 7px 18px rgba(142, 80, 60, 0.18);
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: var(--accent-dark);
+  box-shadow: 0 10px 22px rgba(142, 80, 60, 0.24);
+}
+
+button:active { transform: translateY(0); }
+
+button:focus-visible {
+  outline: 3px solid rgba(181, 109, 82, 0.45);
+  outline-offset: 4px;
+}
+
+.video-page {
+  max-width: 900px;
+  padding: 12px 0 0;
+}
+
+.video-page h2 {
+  margin: 0 0 26px;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+.video-frame {
+  position: relative;
+  /* Portrait 9:16 frame, like a vertical phone video. */
+  width: min(100%, 405px);
+  aspect-ratio: 9 / 16;
+  margin: 12px auto 22px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  background: rgba(255, 253, 247, 0.88);
+  box-shadow: 0 22px 50px rgba(72, 54, 39, 0.2);
+}
+
+.video-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  background: #211d1a;
+  object-fit: contain;
+}
+
+.video-caption {
+  margin: 0 auto 22px;
+  color: var(--muted);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  font-style: italic;
+}
+
+.secondary-button {
+  color: var(--ink);
+  background: rgba(255, 250, 240, 0.8);
+  border: 1px solid rgba(131, 107, 83, 0.2);
+  box-shadow: none;
+}
+
+.secondary-button:hover { background: #fffaf0; }
+
+#sparkles {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  bottom: -24px;
+  color: rgba(181, 109, 82, 0.7);
+  opacity: 0;
+  animation: floatUp var(--duration, 8s) linear forwards;
+  text-shadow: 0 0 12px rgba(255, 250, 240, 0.9);
+  will-change: transform, opacity;
+}
+
+[hidden] { display: none !important; }
+
+@keyframes arrive {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatUp {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(0deg) scale(0.7); }
+  12% { opacity: 0.8; }
+  80% { opacity: 0.55; }
+  100% { opacity: 0; transform: translate3d(24px, -110vh, 0) rotate(180deg) scale(1.15); }
+}
+
+@media (max-width: 600px) {
+  .scrapbook {
+    width: min(100% - 22px, 940px);
+    padding-top: 24px;
+    padding-bottom: 32px;
+  }
+
+  .welcome { padding: 38px 22px; }
+  .video-frame { width: min(100%, 360px); padding: 7px; }
+}
+
+@media (max-height: 760px) {
+  .video-frame {
+    width: min(100%, 405px, calc((100vh - 210px) * 9 / 16));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

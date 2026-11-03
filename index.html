@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e8dfd1">
+  <title>A Birthday Full of Memories</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="scrapbook">
+    <section id="welcome" class="welcome">
+      <h1>Честит рожден ден! 🎁</h1>
+      <p class="intro">
+        Малка изненада, събрала усмивки,
+        хубави моменти и много обич.
+      </p>
+      <button id="openGift" type="button">Гледай изненадата ✨</button>
+    </section>
+
+    <section id="videoPage" class="video-page" hidden>
+      <p class="eyebrow">СПЕЦИАЛНО ЗА ТЕБ ❤️ </p>
+
+      <div class="video-frame">
+        <video id="birthdayVideo" playsinline preload="metadata">
+          <source src="video/birthday.mp4" type="video/mp4">
+          Браузърът ти не поддържа възпроизвеждане на видео.
+        </video>
+      </div>
+
+      <button id="replayVideo" class="secondary-button" type="button" hidden>↻ Гледай отново</button>
+    </section>
+
+    <div id="sparkles" aria-hidden="true"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
